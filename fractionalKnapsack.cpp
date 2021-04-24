@@ -11,64 +11,74 @@
  *	He can take fraction of one item.
  ****************************************
  */
-#include <iostream>
-#include <algorithm>
+#include<iostream>
+#include<algorithm>
 using namespace std;
 
 class myItem
-{
-public:
-    int value, weight;
-    float ratio; //value by weight
-
-    void load(int w, int v)
-    {
-        value = v;
-        weight = w;
-        ratio = (float)value / weight;
-    }
-    void display()
-    {
-        cout << ratio << "       " << weight << "       " << value << endl;
-    }
-};
+{	
+	public:
+	int value,weight;
+	float ratio;  
+	
+	void findratio()
+	{	//value by weight
+		ratio = (float)value/weight;
+	}
+	
+}; 
 
 //function to sort obj by ratio to use sort :)
-// sort(obj,obj + 5,sortbyratio);
-bool sortbyratio(myItem const &A, myItem const &B)
+// sort(obj,obj + 5,sortbyratio); 
+bool sortbyratio(myItem const & A, myItem const & B) 
 {
     return (A.ratio > B.ratio);
 }
 
 int main(void)
-{
-    //using hardcoded data
-    int items = 5, maxWeight = 100;
-    int i_value[items] = {2, 9, 5, 7, 6};
-    int i_weight[items] = {10, 36, 25, 50, 24};
-    myItem obj[items]; //for unsorted ratio
+{	
+	
+    int items,maxWeight,count; //5 , 100
+	
+	cout<<"Please Enter No of Items  : ";
+	cin>>items;
+	myItem obj[items]; //for unsorted value,weight,ratio
+
+	cout<<"Enter Space separated Values  : ";
+	for (int i = 0; i < items; i++)
+	{
+		cin>>obj[i].value;
+	}
+	cout<<"Enter Space separated Weights : ";
+	for (int i = 0; i < items; i++)
+	{
+		cin>>obj[i].weight;
+	}
+
+	cout<<"Enter Maximum size(Weight) of Sack : ";
+	cin>>maxWeight;
 
     for (int i = 0; i < items; i++)
-    {
-        obj[i].load(i_weight[i], i_value[i]);
+    {	//calculationg ratio
+	    obj[i].findratio();
     }
 
-    cout << "displaying Unsorted data  :" << endl;
-    cout << "ratio | weight | value" << endl;
-    for (int i = 0; i < items; i++)
-    {
-        obj[i].display();
-    }
-
-    sort(obj, obj + items, sortbyratio); //sorting objects :)
-
-    cout << "displaying sorted data  :" << endl;
-    cout << "ratio | weight | value" << endl;
-    for (int i = 0; i < items; i++)
-    {
-        obj[i].display();
-    }
-
+	cout<<"Displaying Unsorted Data  :"<<endl ; 
+	cout<<"Value | Weight | Ratio"<<endl;
+	for (int i = 0; i < items; i++)
+	{
+		cout<<obj[i].value<<"       "<<obj[i].weight<<"        "<<obj[i].ratio<<endl;
+	}
+    
+	sort(obj,obj + items,sortbyratio); //sorting objects :)
+    
+	cout<<"Displaying Sorted Data  : (Decending by ratio)"<<endl ; 
+	cout<<"Value | Weight | Ratio"<<endl;
+	for (int i = 0; i < items; i++)
+	{
+		cout<<obj[i].value<<"       "<<obj[i].weight<<"        "<<obj[i].ratio<<endl;
+	}
+	
     // since obj list is sorted
 
     float total_weight = 0, total_value = 0;
@@ -93,21 +103,20 @@ int main(void)
 }
 
 /************OUTPUT*************
-displaying Unsorted data  :
-ratio | weight | value
-0.2       10       2
-0.25       36       9
-0.2       25       5
-0.14       50       7
-0.25       24       6
-displaying sorted data  :
-ratio | weight | value
-0.25       36       9
-0.25       24       6
-0.2       10       2
-0.2       25       5
-0.14       50       7
-total weight taken : 100
-total value : 22.7
-
+Please Enter No of Items  : 3
+Enter Space separated Values  : 60 100 120 
+Enter Space separated Weights : 10 20 30
+Enter Maximum size(Weight) of Sack : 50
+Displaying Unsorted Data  :
+Value | Weight | Ratio
+60       10        6
+100       20        5
+120       30        4
+Displaying Sorted Data  : (Decending by ratio)
+Value | Weight | Ratio
+60       10        6
+100       20        5
+120       30        4
+total weight taken : 50
+total value : 240
 ********************************/
