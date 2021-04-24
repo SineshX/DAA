@@ -3,3 +3,7 @@
 test.cpp
 /.vscode
 tempCoderunner
+# To stop tracking a file but keep the file, use:
+# git rm --cached <file> 
+# git rm --cached test.cpp 
+# 
