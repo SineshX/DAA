@@ -8,7 +8,7 @@ int main()
     int weight[]={0,2,3,4,5};
     int value[]= {0,5,2,9,6};
 
-    int items = 4 ,maxWeight = 6 ; //5 , 100
+    int items = 4 ,maxWeight = 6 ; 
 	
     //calc matrix
     int v[50][50];
