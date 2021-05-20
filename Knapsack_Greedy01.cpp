@@ -7,50 +7,27 @@
  * Problem:  Write a program to impliment 0/1 Knapsack using Greedy Strategy.
  ****************************************
  *	Consider there is one thief, who want to take the most valueable items
- *	but he can carry maximum 100 kg.
+ *	but he can carry maximum 10 kg.
  *	He can't take fraction of one item , Thus, he may take a item (1) or not (0)
  ****************************************
  */
 
 #include<iostream>
 #include<algorithm>
-#include<vector>
 using namespace std;
 
 class myItem
 {	
 	public:
 	int value,weight;
-	float ratio; //value by weight 
-	myItem()
-	{
-		value = 0;
-		weight = 1;
-		ratio = 0;
-	}
-	// myItem (const myItem &obj)//Copy Constructor
-	// {
-	// 	value = obj.value;
-	// 	weight = obj.weight;
-	// 	ratio = obj.ratio;
-	// }
-	void load(int w , int v)
-	{	//just don't pass 0 as weight:_:
-		value = v;
-		weight = w;
+	float ratio;  
+	
+	void findratio()
+	{	//value by weight
 		ratio = (float)value/weight;
 	}
 	
 }; 
-
-//defining > (comparison operator) globally, to use sort :) 
-// sort(objlist.begin(), objlist.end());
-// bool operator>(myItem const & a, myItem const & b)
-// {
-//     return a.ratio > b.ratio;
-// }
-
-//or
 
 //function to sort obj by ratio to use sort :)
 // sort(obj,obj + 5,sortbyratio); 
@@ -61,36 +38,46 @@ bool sortbyratio(myItem const & A, myItem const & B)
 
 int main(void)
 {	
-	//using hardcoded data
-    int items = 5,maxWeight = 100;
-    int i_value[items] = {2,9,5,7,6};
-    int i_weight[items] = {10,36,25,50,24};
+	
+    int items,maxWeight,count; //5 , 100
+	
+	cout<<"Please Enter No of Items  : ";
+	cin>>items;
+	myItem obj[items]; //for unsorted value,weight,ratio
 
-	// vector<myItem> objlist; //vector used to store myItem class objects
+	cout<<"Enter Space separated Values  : ";
+	for (int i = 0; i < items; i++)
+	{
+		cin>>obj[i].value;
+	}
+	cout<<"Enter Space separated Weights : ";
+	for (int i = 0; i < items; i++)
+	{
+		cin>>obj[i].weight;
+	}
 
-	myItem obj[items]; //for unsorted ratio  
+	cout<<"Enter Maximum size(Weight) of Sack : ";
+	cin>>maxWeight;
 
     for (int i = 0; i < items; i++)
-    {
-	    obj[i].load(i_weight[i],i_value[i]);
-		// objlist.push_back(obj[i]);
+    {	//calculationg ratio
+	    obj[i].findratio();
     }
 
-	// or vector<myItem> objlist (myints, myints+8)
-	// sort(objlist.begin(), objlist.end());
-	cout<<"displaying Unsorted data  :"<<endl ; 
-	cout<<"ratio | weight | value"<<endl;
+	cout<<"Displaying Unsorted Data  :"<<endl ; 
+	cout<<"Value | Weight | Ratio"<<endl;
 	for (int i = 0; i < items; i++)
 	{
-		cout<<obj[i].ratio<<"       "<<obj[i].weight<<"       "<<obj[i].value<<endl;
+		cout<<obj[i].value<<"       "<<obj[i].weight<<"        "<<obj[i].ratio<<endl;
 	}
+    
 	sort(obj,obj + items,sortbyratio); //sorting objects :)
     
-	cout<<"displaying sorted data  :"<<endl ; 
-	cout<<"ratio | weight | value"<<endl;
+	cout<<"Displaying Sorted Data  : (Decending by ratio)"<<endl ; 
+	cout<<"Value | Weight | Ratio"<<endl;
 	for (int i = 0; i < items; i++)
 	{
-		cout<<obj[i].ratio<<"       "<<obj[i].weight<<"       "<<obj[i].value<<endl;
+		cout<<obj[i].value<<"       "<<obj[i].weight<<"        "<<obj[i].ratio<<endl;
 	}
 	
 	// since obj list is sorted 
@@ -112,21 +99,25 @@ int main(void)
 	cout<<"total value : "<<total_value<<endl;
     return 0;
 }
-/**********OUTPUT***********
-displaying Unsorted data  :
-ratio | weight | value     
-0.2       10       2       
-0.25       36       9      
-0.2       25       5       
-0.14       50       7      
-0.25       24       6      
-displaying sorted data  :  
-ratio | weight | value     
-0.25       36       9      
-0.25       24       6      
-0.2       10       2       
-0.2       25       5
-0.14       50       7
-total weight : 95
-total value : 22
+/**********OUTPUT*********** submitted
+Please Enter No of Items  : 5
+Enter Space separated Values  : 4 5 8 9 10
+Enter Space separated Weights : 1 2 4 5 3 
+Enter Maximum size(Weight) of Sack : 10
+Displaying Unsorted Data  :
+Value | Weight | Ratio
+4       1        4
+5       2        2.5
+8       4        2
+9       5        1.8
+10       3        3.33333
+Displaying Sorted Data  : (Decending by ratio)
+Value | Weight | Ratio
+4       1        4
+10       3        3.33333
+5       2        2.5
+8       4        2
+9       5        1.8
+total weight : 10
+total value : 27
 */
