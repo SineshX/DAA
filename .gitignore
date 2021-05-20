@@ -1,10 +1,12 @@
 
 *.exe
+links.txt
 test1.cpp
+tempCodeRunnerFile.cpp
 /.vscode
 tempCoderunner
 # To stop tracking a file but keep the file, use:
 # git rm --cached <file> 
 # git rm --cached test.cpp 
 # just remove from gitignore  to get it back
-Knapsack_recurtion.cpp
+Adjacency_List.cpp
