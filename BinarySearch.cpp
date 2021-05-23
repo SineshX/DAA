@@ -14,7 +14,7 @@ long int myRandom(unsigned long int n)
 }
 
 int mybubble(unsigned long int a[], unsigned long int n) //Bubble Sort
-{
+{   //improved bubbble sort
     int c = 0; //for swap
     //sorting using bubble sort :)
     for (int s = 0; s < n - 1; s++)
