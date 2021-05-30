@@ -17,7 +17,7 @@ int main()
     cout<<"\n\nMinimum cost is "<<cost<<endl;
 
     return 0;
-}
+}//end of main function
 
 void init()
 {

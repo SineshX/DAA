@@ -41,12 +41,13 @@ void matrixChainMult(int *p, int n)
     {
         m[i][i] = 0;
     }
-    for (int l = 2; l <= n; l++)
-    {
+    for (int l = 2; l <= n; l++) 
+    { // say n = 5 , run loop 4 times  = no of rows(no of matrix) to be filled // exclude 0th row
+
         for (int i = 1; i <= n - l + 1; i++)
-        {
+        {   // excluded 0th column , start from 1st column
             j = i + l - 1;
-            m[i][j] = INT_MAX;
+            m[i][j] = INT_MAX; // INT_MAX = 2,147,483,647 in <climits>
             for (int k = i; k < j; k++)
             {
                 q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];

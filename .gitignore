@@ -10,3 +10,5 @@ tempCoderunner
 # git rm --cached test.cpp 
 # just remove from gitignore  to get it back
 Adjacency_List.cpp
+a.py
+image2webS.py

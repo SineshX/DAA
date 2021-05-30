@@ -84,7 +84,7 @@ int main()
 { //prims algorithm is a greedy algorithm to find minimum spanning (mst)tree
     Graph g;
     g.init(6);
-    g.addEdge(1,2,8,1);
+    g.addEdge(1,2,8,1); //flag 1 for undirected
     g.addEdge(2,3,8,1);
     g.addEdge(3,4,12,1);
     g.addEdge(4,5,2,1);

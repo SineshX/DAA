@@ -97,6 +97,7 @@ int main(void)
     }
 	cout<<"total weight : "<<total_weight<<endl;
 	cout<<"total value : "<<total_value<<endl;
+	cout<<"may note be the best sol becaue of greeedy approach"<<endl;
     return 0;
 }
 /**********OUTPUT*********** submitted

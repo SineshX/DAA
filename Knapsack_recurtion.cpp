@@ -17,8 +17,8 @@ int knapsack(int weight[],int value[],int maxWeight,int n)
     {
         return 0;
     }
-    if(weight[n-1]<=maxWeight)
-    {
+    if(weight[n-1] <= maxWeight)
+    {   //last item ka weight <= maxWeight
         return max((value[n-1]+knapsack(weight,value,maxWeight-weight[n-1],n-1)),
                     knapsack(weight,value,maxWeight,n-1));
     }
@@ -31,16 +31,20 @@ int knapsack(int weight[],int value[],int maxWeight,int n)
 
 int main()
 {
-    int value[]= {1,2,5,6};
-    int weight[]= {2,3,4,5};
-    int maxWeight=8;
-    int n=sizeof(weight)/sizeof(weight[0]);
-    cout << "answer is: "<<knapsack(weight,value,maxWeight,n)<<endl;
+    int value[]= {19,13,9};
+    int weight[]= {13,8,16};
+    // int value[]= {70,80,90,200};
+    // int weight[]= {20,30,40,70};
+
+    int maxWeight=13;
+    int n = sizeof(weight)/sizeof(weight[0]);
+    int totalValue = knapsack(weight,value,maxWeight,n);
+    cout << "Total Value of sack is :  "<<totalValue<<endl;
     return 0;
 }
 
 /***************OUTPUT*****************
 
-answer is: 8   
+Total Value of sack is :  8  
 
 */
